@@ -25,20 +25,10 @@ withEnv(["HOME=${env.WORKSPACE}"]) {
 			println rc
         }
 
-/*
-        stage('Run Test Code') {
-
-			// need to pull out assigned username
-			   rmsg = command "sfdx force:apex:test:run --targetusername HubOrg --resultformat human --codecoverage --testlevel ${TEST_LEVEL}"
-			  
-            println('Hello from a Job DSL script! ok')
-            println(rmsg)
-        }*/
-
 
         stage('Export Objects data'){
 
-            emsg = command "sfdx texei:data:export --dataplan ./datasource/dataplan.json --outputdir ./datasource --targetusername HubOrg"
+            emsg = command "sfdx texei:data:export --dataplan ./data-source/data-plan.json --outputdir ./datasource --targetusername HubOrg"
             println('EXPORT TEST')
             println(emsg)
         }
@@ -49,7 +39,7 @@ withEnv(["HOME=${env.WORKSPACE}"]) {
                         error 'Salesforce dev hub org authorization failed.'
                     }
             println rc2
-             emsg = command "sfdx texei:data:import --inputdir ./datasource --targetusername OrgDevRebbe"
+             emsg = command "sfdx texei:data:import --inputdir ./data-source --targetusername OrgDevRebbe"
             println('IMPORT TEST')
 
         }
