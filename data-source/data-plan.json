@@ -1,0 +1,23 @@
+{
+  "excludedFields": [
+    "LastModifiedDate",
+    "CreatedById",
+    "CreatedDate",
+    "LastModifiedById"
+  ],
+  "lookupOverride": {},
+  "sObjects": [
+    {
+      "name": "Account",
+      "label": "Parent Account",
+      "filters": "ParentId = null",
+      "externalId": ""
+    },
+    {
+      "name": "Account",
+      "label": "Child Account",
+      "filters": "ParentId != null",
+      "externalId": ""
+    }
+  ]
+}
